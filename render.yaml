@@ -1,0 +1,12 @@
+services:
+  - type: web
+    runtime: node
+    name: carrington-brown-site
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DASH_KEY
+        value: buckets2026
