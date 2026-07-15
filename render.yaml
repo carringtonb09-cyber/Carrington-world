@@ -1,12 +1,19 @@
+# Render Blueprint — describes how carringtonbrown.com is actually hosted.
+#
+# The LIVE site is a STATIC SITE named "carrington-world"
+#   Service ID:   srv-d6rs9f7fte5s73esq5m0
+#   Dashboard:    https://dashboard.render.com/static/srv-d6rs9f7fte5s73esq5m0
+#   Custom domain: carringtonbrown.com
+#
+# It just serves this repo's files as-is (index.html at the root).
+# There is NO build step and NO Node server involved for the public site.
+# To edit the site, change index.html / assets/, then run ./deploy.sh "message".
+
 services:
   - type: web
-    runtime: node
-    name: carrington-brown-site
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: DASH_KEY
-        value: buckets2026
+    runtime: static
+    name: carrington-world
+    branch: main
+    buildCommand: ""
+    staticPublishPath: .
+    autoDeploy: true
